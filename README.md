@@ -91,3 +91,61 @@ Example:
 
 * Caveat: we can put an entire function on one line with arrow functions, but we *cannot* use the *return* keyword or curly braces. 
 
+* Before we go any further, let's review an important (and tricky) part of JavaScript: the ```this``` keyword.
+    * In most cases, the value of ```this``` is determined
+    by how a function is called. It can't be set by assignment during execution, and it may be different each time the function is called.
+    * In the ***global*** context (outside of any function), ```this``` refers to the global object. 
+    * In the ***function*** context, the value of ```this``` depends on how the function is called:
+        ```javascript
+        function f1(){
+            return this;
+        }
+        // In a browser:
+        f1() === window; // True
+
+        function f2(){
+            'use strict';
+            return this;
+        }
+
+        // In a browser: 
+        f2() === undefined;
+        ```
+
+    * We can also pass the value of ```this``` from one context to another, use `call` or `apply` :
+    ```javascript
+    // An object can be passed as the first argument to call or apply and this will be bound to it.
+    var obj = {a: 'Custom'};
+
+    // This property is set on the global object
+    var a = 'Global';
+
+    function whatsThis(arg) {
+    return this.a;  // The value of this is dependent on how the function is called
+    }
+
+    whatsThis();          // 'Global'
+    whatsThis.call(obj);  // 'Custom'
+    whatsThis.apply(obj); // 'Custom'
+    ```
+
+* There are, actually, a few more caveats for **arrow functions**:
+    * Arrow functions do not get their own keyword `this`.
+    * Arrow functions do not get their own keyword `arguments`
+        * However, an `arguments` keyword can be accessed if the arrow function is inside of another function (it will be the outer function's arguments).
+    * Inside an arrow function, the keyword `this` has its original meaning from the enclosing context. 
+
+#### Default Parameters
+
+* This is pretty self explanatory:
+
+```javascript
+    function add(a = 10,b = 2){
+        return a + b;
+    }
+
+    add(); // 12
+```
+#### For...of Loop
+* Syntax is very similar to a for...in loop, though the former is used for iterating over keys inside of an object, whereas a for...of loop is used to iterate over values in an array.
+
