@@ -147,5 +147,20 @@ Example:
     add(); // 12
 ```
 #### For...of Loop
-* Syntax is very similar to a for...in loop, though the former is used for iterating over keys inside of an object, whereas a for...of loop is used to iterate over values in an array.
+* Syntax is very similar to a for...in loop, though the former is used for iterating over keys inside of an object, whereas a for...of loop is used to iterate over values in an iterable object (i.e. Array, Map, Set, arguments)
+
+```javascript 
+    /* Example illustrating difference between for..in vs
+    for..of */
+    var arr = [3, 5, 7];
+    arr.foo = 'hello';
+
+    for (var i in arr) {
+        console.log(i); // logs "0", "1", "2", "foo"
+    }
+
+    for (var i of arr) {
+        console.log(i); // logs 3, 5, 7
+    }
+```
 
