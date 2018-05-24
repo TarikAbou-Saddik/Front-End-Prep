@@ -1,0 +1,2 @@
+# Making sure the Node modules don't get copied into the GitHub repo.
+node_modules
