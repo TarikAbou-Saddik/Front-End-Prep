@@ -4,7 +4,7 @@
 
 * In essence, when you declare a variable with ```const```, you simply re-declare it (similarly to ```const``` in C++ and ```final``` in Java).
 
-* Note: you can still change (i.e mutate) the value of an array or object, even if it declared using ```const```. Primitive types, however, are *not* mutable with ```const```.
+* Note: you can still change (i.e mutate) the value of an array or object, even if it is declared using ```const```. Primitive types, however, are *not* mutable with ```const```.
 
 
 #### let
@@ -40,9 +40,9 @@ Example:
     Is really the same as:
     ```javascript
     function helloInstructor(){
-        var ellie;
+        var ellie; // Declaration
         return ellie;
-        ellie = "ME!";
+        ellie = "ME!"; // Assignment
     }
     ```
 * Note: ```let``` also does get hoisted up in a similar function declaration, but we do not actually have access to it! In fact, it is in a *temporal dead zone* (TDZ) and the following would return a ReferenceError. 
